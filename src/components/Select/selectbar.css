@@ -1,0 +1,24 @@
+.custom-select {
+  border: none;
+  background: #ffffff;
+  box-shadow: 0px 5px 20px rgb(149 179 197 / 30%);
+  border-radius: 6px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 23px;
+  padding: 8px 70px 8px 2px;
+  color: #3b4449;
+  width: 100%;
+}
+
+.custom-select:focus {
+  outline: none;
+  border-color: #9ecaed;
+  box-shadow: 0 0 10px #9ecaed;
+}
+
+.button-a {
+  border-radius: 50%;
+  background-color: red;
+}
