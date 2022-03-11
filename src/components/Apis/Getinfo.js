@@ -5,12 +5,16 @@ import Input from "../Input_box/Input";
 import getYoutubeId from "npm-get-youtube-id";
 import DisplayChannel from "../Display/DisplayChannel";
 
+import { BASE_URL } from "../../Api_details/API_data";
+
 const Getinfo = () => {
   const [data, setData] = useState([]);
   const [inp, setInp] = useState("");
   const [selectedOption, setSelectedOption] = useState("0");
   const [videosData, setVideosData] = useState(null);
-  console.log(videosData);
+
+  const API_KEY = process.env.API_KEY;
+
   const getValue = (e) => {
     setSelectedOption(e.target.value);
   };
@@ -27,7 +31,7 @@ const Getinfo = () => {
     let ytid = getYoutubeId(url);
 
     fetch(
-      `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${ytid}&key=AIzaSyBHP5FZDmvx8YtQGSVtZx0ChphxgkdZoWA`,
+      `${BASE_URL}videos?part=snippet%2CcontentDetails%2Cstatistics&id=${ytid}&key=${API_KEY}`,
       requestOptions
     )
       .then((response) => response.json())
@@ -46,13 +50,13 @@ const Getinfo = () => {
     //let channelID = getYoutubeChannelId(url)
 
     fetch(
-      "https://www.googleapis.com/youtube/v3/channels?id=UCJWh7F3AFyQ_x01VKzr9eyA&key=AIzaSyBHP5FZDmvx8YtQGSVtZx0ChphxgkdZoWA&part=contentDetails",
+      `${BASE_URL}channels?id=UCJWh7F3AFyQ_x01VKzr9eyA&key=${API_KEY}&part=contentDetails`,
       requestOptions
     )
       .then((response) => response.json())
       .then(async (result) => {
         fetch(
-          `https://www.googleapis.com/youtube/v3/playlistItems?playlistId=${result.items[0].contentDetails.relatedPlaylists.uploads}&key=AIzaSyBHP5FZDmvx8YtQGSVtZx0ChphxgkdZoWA&part=snippet&maxResults=5`,
+          `${BASE_URL}playlistItems?playlistId=${result.items[0].contentDetails.relatedPlaylists.uploads}&key=${API_KEY}&part=snippet&maxResults=5`,
           requestOptions
         )
           .then((response) => response.json())
