@@ -14,6 +14,21 @@ const Input = (props) => {
             onChange={(e) => {
               props.setInp(e.target.value);
             }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                if (props.inp !== "") {
+                  if (props.option === "1") {
+                    props.getdata(props.inp);
+                  } else {
+                    props.getvideosdata();
+                    return;
+                  }
+                } else {
+                  alert("Please enter url");
+                  return;
+                }
+              }
+            }}
             value={props.inp}
           />
           <span id="bt">

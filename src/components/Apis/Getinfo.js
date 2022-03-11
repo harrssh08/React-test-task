@@ -4,7 +4,7 @@ import Display from "../Display/Display";
 import Input from "../Input_box/Input";
 import getYoutubeId from "npm-get-youtube-id";
 import DisplayChannel from "../Display/DisplayChannel";
-
+import axios from "axios";
 import { BASE_URL } from "../../Api_details/API_data";
 
 const Getinfo = () => {
@@ -13,7 +13,7 @@ const Getinfo = () => {
   const [selectedOption, setSelectedOption] = useState("0");
   const [videosData, setVideosData] = useState(null);
 
-  const API_KEY = process.env.API_KEY;
+  const API_KEY = "AIzaSyBHP5FZDmvx8YtQGSVtZx0ChphxgkdZoWA";
 
   const getValue = (e) => {
     setSelectedOption(e.target.value);
@@ -27,23 +27,24 @@ const Getinfo = () => {
     });
   };
 
-  const getdata = (url) => {
-    let ytid = getYoutubeId(url);
+  const getdata = async (url) => {
+    try {
+      let ytid = getYoutubeId(url);
 
-    fetch(
-      `${BASE_URL}videos?part=snippet%2CcontentDetails%2Cstatistics&id=${ytid}&key=${API_KEY}`,
-      requestOptions
-    )
-      .then((response) => response.json())
-      .then((result) => {
-        if (data.length > 9) {
-          alert("Only 10 Videos you can add in demo version");
-        } else {
-          setData([...data, result]);
-          setInp("");
-        }
-      })
-      .catch((error) => console.log("error", error));
+      const response = await axios.get(
+        `${BASE_URL}videos?part=snippet%2CcontentDetails%2Cstatistics&id=${ytid}&key=${API_KEY}`,
+        requestOptions
+      );
+
+      if (data.length > 9) {
+        alert("Only 10 Videos you can add in demo version");
+      } else {
+        setData([...data, response.data]);
+        setInp("");
+      }
+    } catch (e) {
+      alert("Something went Wrong!!");
+    }
   };
 
   const getvideosdata = () => {
