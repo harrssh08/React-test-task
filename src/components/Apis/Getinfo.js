@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, createContext } from "react";
 import requestOptions from "./requestOptions";
 import Display from "../Display/Display";
 import Input from "../Input_box/Input";
 import getYoutubeId from "npm-get-youtube-id";
 import DisplayChannel from "../Display/DisplayChannel";
 import axios from "axios";
-import { BASE_URL } from "../../Api_details/API_data";
+import { BASE_URL } from "../../API_functions/API_data";
+import GetChannelID from "../../API_functions/Getchannelid";
+import Videos_API from "../../API_functions/Videos_API";
+import { Link } from "react-router-dom";
+import UserContext from "./UserContext";
+import GetCaptions from "../SecondPage/Details/GetCaptions";
 
 const Getinfo = () => {
   const [data, setData] = useState([]);
@@ -13,18 +18,26 @@ const Getinfo = () => {
   const [selectedOption, setSelectedOption] = useState("0");
   const [videosData, setVideosData] = useState(null);
 
-  const API_KEY = "AIzaSyBHP5FZDmvx8YtQGSVtZx0ChphxgkdZoWA";
+  const API_KEY = "AIzaSyBHP5FZDmvx8YtQGSVtZx0ChphxgkdZoWA"; //process.env.API_KEY;
 
   const getValue = (e) => {
     setSelectedOption(e.target.value);
   };
 
   const delData = (id) => {
-    setData((olddata) => {
-      return olddata.filter((arrelement, index) => {
-        return index !== id;
+    if (selectedOption === "1") {
+      setData((olddata) => {
+        return olddata.filter((arrelement, index) => {
+          return index !== id;
+        });
       });
-    });
+    } else {
+      setVideosData((olddata) => {
+        return olddata.filter((arrelement, index) => {
+          return index !== id;
+        });
+      });
+    }
   };
 
   const getdata = async (url) => {
@@ -44,27 +57,41 @@ const Getinfo = () => {
       }
     } catch (e) {
       alert("Something went Wrong!!");
+      //console.log(e);
     }
   };
 
-  const getvideosdata = () => {
-    //let channelID = getYoutubeChannelId(url)
+  const getvideosdata = async (url) => {
+    try {
+      let collections = GetChannelID(url);
+      let channelID = collections.slice(-1).toString();
 
-    fetch(
-      `${BASE_URL}channels?id=UCJWh7F3AFyQ_x01VKzr9eyA&key=${API_KEY}&part=contentDetails`,
-      requestOptions
-    )
-      .then((response) => response.json())
-      .then(async (result) => {
-        fetch(
-          `${BASE_URL}playlistItems?playlistId=${result.items[0].contentDetails.relatedPlaylists.uploads}&key=${API_KEY}&part=snippet&maxResults=5`,
+      if (collections.includes("c")) {
+        const playlist_id = await axios.get(
+          `${BASE_URL}channels?part=contentDetails&forUsername=${channelID}&key=${API_KEY}`,
           requestOptions
-        )
-          .then((response) => response.json())
-          .then((result) => setVideosData(result))
-          .catch((error) => console.log("error", error));
-      })
-      .catch((error) => console.log("error", error));
+        );
+
+        const videos_data = await Videos_API(
+          playlist_id.data.items[0].contentDetails.relatedPlaylists.uploads
+        );
+        setVideosData(videos_data.data.items);
+        setInp("");
+      } else {
+        const playlist_id = await axios.get(
+          `${BASE_URL}channels?id=${channelID}&key=${API_KEY}&part=contentDetails`,
+          requestOptions
+        );
+
+        const videos_data = await Videos_API(
+          playlist_id.data.items[0].contentDetails.relatedPlaylists.uploads
+        );
+        setVideosData(videos_data.data.items);
+        setInp("");
+      }
+    } catch (e) {
+      alert("Something went Wrong!!");
+    }
   };
 
   return (
@@ -78,12 +105,27 @@ const Getinfo = () => {
         option={selectedOption}
         getvideosdata={getvideosdata}
       />
+      <div className="container text-center my-5">
+        <Link to="/search">
+          <button
+            className="btn justify-center"
+            style={{ backgroundColor: "#34c36d", color: "white" }}
+          >
+            Search
+          </button>
+        </Link>
+      </div>
       {/* Disply data*/}
+
       {selectedOption === "1" ? (
         <Display data={data} delData={delData} />
       ) : (
-        <DisplayChannel data={videosData} />
+        <DisplayChannel data={videosData} delData={delData} />
       )}
+
+      <UserContext.Provider value={data}>
+        <GetCaptions />
+      </UserContext.Provider>
     </>
   );
 };

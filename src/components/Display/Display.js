@@ -1,10 +1,12 @@
 import Card from "../Card/Card";
-
+import { Link } from "react-router-dom";
 const Display = (props) => {
   return (
     <>
       {props.data.length === 0 ? (
-        <p>No Data</p>
+        <div className="container text-center my-5">
+          <p>No Data</p>
+        </div>
       ) : (
         <>
           {props.data.map((d, index) => {

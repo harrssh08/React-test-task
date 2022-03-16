@@ -20,7 +20,7 @@ const Input = (props) => {
                   if (props.option === "1") {
                     props.getdata(props.inp);
                   } else {
-                    props.getvideosdata();
+                    props.getvideosdata(props.inp);
                     return;
                   }
                 } else {
@@ -40,7 +40,7 @@ const Input = (props) => {
                   if (props.option === "1") {
                     props.getdata(props.inp);
                   } else {
-                    props.getvideosdata();
+                    props.getvideosdata(props.inp);
                     return;
                   }
                 } else {

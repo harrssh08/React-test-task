@@ -1,14 +1,15 @@
 import React from "react";
-import Getinfo from "./components/Apis/Getinfo";
-import Header from "./components/Header/Header";
-import Logo from "./components/Logo/Logo";
+import { Route, Routes } from "react-router-dom";
+import Firstpage from "./Firstpage";
+import Secondpage from "./Secondpage";
 
 function App() {
   return (
     <>
-      <Logo />
-      <Header />
-      <Getinfo />
+      <Routes>
+        <Route path="/" element={<Firstpage />} />
+        <Route path="/search" element={<Secondpage />} />
+      </Routes>
     </>
   );
 }
