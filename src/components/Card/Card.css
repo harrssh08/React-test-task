@@ -40,7 +40,6 @@
 
 .ddd {
   display: flex 1;
-
   margin-top: 3%;
 }
 
@@ -48,4 +47,13 @@
   position: absolute;
   margin-top: -15px;
   margin-left: 220px;
+}
+
+.caption-card {
+  margin-right: 2%;
+  border-right: 1px solid #c4c4c4;
+  padding-right: 60px;
+  margin-bottom: 2%;
+  box-sizing: content-box;
+  min-width: 300px;
 }

@@ -18,7 +18,9 @@ const DisplayChannel = (props) => {
           );
         })
       ) : (
-        <p>No Data</p>
+        <div className="container text-center my-5">
+          <p>No Videos Data</p>
+        </div>
       )}
     </>
   );
