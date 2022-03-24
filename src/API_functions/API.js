@@ -19,7 +19,6 @@ const Videos_API = async (videoID) => {
   );
 
   const cap = await axios.get(`http://localhost:5000/get?id=${videoID}`);
-  console.log(videoID);
   const arr = [];
   arr.push(Videos_data);
   arr.push(cap);

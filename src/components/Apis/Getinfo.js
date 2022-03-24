@@ -101,13 +101,17 @@ const Getinfo = () => {
       />
 
       {/* Disply data*/}
-
-      {selectedOption === "1" ? (
-        <Display data={data} delData={delData} />
-      ) : (
-        <DisplayChannel data={videosData} delData={delData} />
-      )}
-
+      <div style={{ display: "grid" }}>
+        {selectedOption === "1" ? (
+          <div style={{ display: "-ms-flexbox" }}>
+            <Display data={data} delData={delData} />
+          </div>
+        ) : (
+          <div style={{ display: "-ms-flexbox" }}>
+            <DisplayChannel data={videosData} delData={delData} />
+          </div>
+        )}
+      </div>
       {/* Button */}
       <div>
         <div className="container text-center my-5">

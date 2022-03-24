@@ -20,6 +20,7 @@
   font-family: "Nunito Sans", sans-serif;
   font-style: normal;
   font-weight: 600;
+  margin-top: 5px;
   font-size: 17px;
 }
 
@@ -70,13 +71,13 @@
   margin-left: 1%;
 }
 
-.card-line {
-  border: 3px solid #dc9c9c;
+/* .card-line {
+  border: 2px solid #dc9c9c;
   margin-left: 2%;
   margin-right: 2%;
   background: #dc9c9c;
   border-radius: 10px;
-}
+} */
 
 .cap-data {
   display: flex;

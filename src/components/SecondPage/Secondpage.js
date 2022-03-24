@@ -22,7 +22,6 @@ const Secondpage = (props) => {
             arr.push(d);
           }
         });
-        console.log(arr);
         if (arr.length !== 0) {
           const x = [arr, val[0]];
           setFinds((preVal) => {
@@ -39,9 +38,10 @@ const Secondpage = (props) => {
       <Logo />
       <Header page="2" />
       <SearchBox setInp={setInp} inp={inp} Search={Search} />
-      <About data={finds} />
+
       {finds.length !== 0 ? (
         <>
+          <About data={finds} />
           {finds.map((d, ind) => {
             return (
               <DisplaySearchResult
