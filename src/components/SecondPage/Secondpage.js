@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "../Logo/Logo";
 import Header from "../Header/Header";
 import SearchBox from "../Input_box/SearchBox";

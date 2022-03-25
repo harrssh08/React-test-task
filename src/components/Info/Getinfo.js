@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Display from "../Display/Display";
 import Input from "../Input_box/Input";
 import getYoutubeId from "npm-get-youtube-id";
@@ -83,11 +83,6 @@ const Getinfo = () => {
     }
   };
 
-  //Second Page Data
-  const find = () => {
-    return <></>;
-  };
-
   return (
     <>
       {/* Input and Select */}
@@ -119,7 +114,11 @@ const Getinfo = () => {
             className="btn justify-center"
             style={{ backgroundColor: "#34c36d", color: "white" }}
             onClick={() => {
-              setPage("2");
+              if (data.length !== 0) {
+                setPage("2");
+              } else {
+                alert("Please add Video First");
+              }
             }}
           >
             Search

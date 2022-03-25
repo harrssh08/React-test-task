@@ -1,7 +1,7 @@
 import axios from "axios";
 import { BASE_URL } from "./API_data";
 
-import requestOptions from "../components/Apis/requestOptions";
+import requestOptions from "../components/Info/requestOptions";
 const API_KEY = "AIzaSyBHP5FZDmvx8YtQGSVtZx0ChphxgkdZoWA";
 
 const Playlist_API = async (playlist_id) => {

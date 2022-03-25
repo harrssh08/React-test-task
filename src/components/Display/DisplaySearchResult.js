@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./DisplaySearchResult.css";
 import CaptionCard from "../Card/CaptionCard";
-import Circle from "../Circle/Circle";
 
 const DisplaySearchResult = (props) => {
   const [showHide, setShowHide] = useState(false);
@@ -25,31 +24,32 @@ const DisplaySearchResult = (props) => {
       </div>
 
       {showHide ? (
-        <div className="cap">
-          <p className="cap-head">
-            In this video
-            <img
-              className="arrow"
-              src="images/arrow.svg"
-              alt="arrow"
-              onClick={() => setShowHide(!showHide)}
-            />
-          </p>
+        <>
+          <div className="tran"></div>
+          <div className="cap">
+            <p className="cap-head">
+              In this video
+              <img
+                className="arrow"
+                src="images/arrow.svg"
+                alt="arrow"
+                onClick={() => setShowHide(!showHide)}
+              />
+            </p>
 
-          <Circle />
-
-          <div className="cap-data">
-            {props.caps.length !== 0 ? (
-              <>
-                {props.caps.map((d, ind) => {
-                  return <CaptionCard key={ind} data={d} id={props.id} />;
-                })}
-              </>
-            ) : (
-              <></>
-            )}
+            <div className="cap-data">
+              {props.caps.length !== 0 ? (
+                <>
+                  {props.caps.map((d, ind) => {
+                    return <CaptionCard key={ind} data={d} id={props.id} />;
+                  })}
+                </>
+              ) : (
+                <></>
+              )}
+            </div>
           </div>
-        </div>
+        </>
       ) : (
         <></>
       )}

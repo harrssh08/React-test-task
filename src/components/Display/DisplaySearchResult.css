@@ -53,7 +53,7 @@
 
 .cap {
   margin-left: 16%;
-  margin-top: 1%;
+
   background: #fff1f3;
   border: 1px solid #efc5c5;
   margin-right: 15%;
@@ -88,4 +88,15 @@
 
 .arrow {
   margin-left: 900px;
+}
+
+.tran {
+  width: 0;
+  height: 0;
+  border: 20px solid transparent;
+  border-top: 0;
+  border-bottom: 25px solid #fff1f3;
+  margin-left: 48%;
+  margin-top: 10px;
+  margin-bottom: 0px;
 }
