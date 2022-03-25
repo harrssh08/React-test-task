@@ -58,6 +58,7 @@
   border: 1px solid #efc5c5;
   margin-right: 15%;
   margin-bottom: 4%;
+  overflow-x: scroll;
 }
 
 .cap-head {
@@ -71,19 +72,18 @@
   margin-left: 1%;
 }
 
-/* .card-line {
+.card-line {
   border: 2px solid #dc9c9c;
   margin-left: 2%;
   margin-right: 2%;
   background: #dc9c9c;
   border-radius: 10px;
-} */
+}
 
 .cap-data {
   display: flex;
   margin-top: 2%;
   margin-left: 1%;
-  overflow-x: scroll;
 }
 
 .arrow {

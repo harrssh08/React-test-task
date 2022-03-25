@@ -67,3 +67,29 @@
   color: #cf203f;
   font-size: 16px;
 }
+
+.round {
+  color: white;
+  border: 5px solid #cf203f;
+  height: 15px;
+  width: 15px;
+  border-radius: 10px;
+  top: -115%;
+  position: absolute;
+  margin-left: 45px;
+}
+
+.line {
+  background: pink;
+  position: relative;
+  height: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+}
+
+.fix-line {
+  margin-right: -60px;
+  min-width: 340%;
+}

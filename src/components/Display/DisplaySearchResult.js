@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import "./DisplaySearchResult.css";
 import CaptionCard from "../Card/CaptionCard";
-import YoutubeEmbed from "../Youtube/YoutubeEmbed";
 import Circle from "../Circle/Circle";
 
 const DisplaySearchResult = (props) => {
   const [showHide, setShowHide] = useState(false);
-  const [play, setPlay] = useState([]);
 
   function kFormatter(num) {
     return Math.abs(num) > 999
@@ -26,15 +24,6 @@ const DisplaySearchResult = (props) => {
         </div>
       </div>
 
-      {/* <YoutubeEmbed embedId={props.id} /> */}
-      {play.length !== 0 ? (
-        <>
-          {console.log(play[1])}
-          <YoutubeEmbed id={play[0]} start={play[1]} setPlay={setPlay} />
-        </>
-      ) : (
-        <></>
-      )}
       {showHide ? (
         <div className="cap">
           <p className="cap-head">
@@ -47,24 +36,13 @@ const DisplaySearchResult = (props) => {
             />
           </p>
 
-          {/* <div className="point">
-            <div className="card-line"></div>
-            <Circle />
-          </div> */}
           <Circle />
 
           <div className="cap-data">
             {props.caps.length !== 0 ? (
               <>
                 {props.caps.map((d, ind) => {
-                  return (
-                    <CaptionCard
-                      key={ind}
-                      data={d}
-                      id={props.id}
-                      setPlay={setPlay}
-                    />
-                  );
+                  return <CaptionCard key={ind} data={d} id={props.id} />;
                 })}
               </>
             ) : (

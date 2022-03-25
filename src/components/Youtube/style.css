@@ -1,4 +1,11 @@
 .video {
   display: flex;
   justify-content: center;
+  border: 5px solid #ffffff;
+}
+
+.cross {
+  position: absolute;
+  margin-left: 100%;
+  margin-top: -3%;
 }
