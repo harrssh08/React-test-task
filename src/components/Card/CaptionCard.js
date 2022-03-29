@@ -28,7 +28,7 @@ const CaptionCard = (props) => {
             <div className="round" onClick={() => setOpen((o) => !o)}></div>
           </div>
         </div>
-        <p className="cap-start" onClick={() => setOpen((o) => !o)}>
+        <p className="caption-start" onClick={() => setOpen((o) => !o)}>
           From : {convert(props.data.start)}
         </p>
         <Popup open={open} closeOnDocumentClick onClose={closeModal}>

@@ -4,29 +4,29 @@ import "./Header.css";
 const Header = (props) => {
   return (
     <>
-      <div className="d-flex justify-content-center my-4 container">
+      <div className="content_center">
         <h4>
           <span className="head_line">
             Tool to Search within Video in 2 simple steps:
           </span>
         </h4>
       </div>
-      <div className="d-flex justify-content-center my-4 container">
+      <div className="content_center">
         {props.page === "1" ? (
           <>
-            <Button id="1" design="1" />
+            <Button step="1" fill_button="1" />
             <hr />
-            <Button id="2" design="2" />
+            <Button step="2" fill_button="2" />
           </>
         ) : (
           <>
-            <Button id="1" design="2" />
+            <Button step="1" fill_button="2" />
             <hr />
-            <Button id="2" design="1" />
+            <Button step="2" fill_button="1" />
           </>
         )}
       </div>
-      <div className="d-flex justify-content-center my-4 container">
+      <div className="content_center">
         {props.page === "1" ? (
           <>
             <p>

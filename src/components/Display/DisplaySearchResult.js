@@ -13,21 +13,26 @@ const DisplaySearchResult = (props) => {
 
   return (
     <>
-      <div className="box" onClick={() => setShowHide(!showHide)}>
-        <img className="thumb" src={props.image} alt="thumbnail" />
-        <div className="desc">
-          <h5 className="heading">{props.head}</h5>
-          <p className="channel">By: {props.channel}</p>
-          <p id="s_v">👁️ {kFormatter(props.view)} </p>
-          <p id="s_d">🕒 {props.time.replace("H", ":").replace("M", ":")}</p>
+      <div className="result_box" onClick={() => setShowHide(!showHide)}>
+        <img className="thumbnail" src={props.image} alt="thumbnail" />
+        <div className="description">
+          <div>
+            <h5 className="heading">{props.head}</h5>
+            <p className="channel_name">By: {props.channel}</p>
+          </div>
+          <div className="time-view-container">
+            <p className="video_duration">
+              🕒 {props.time.replace("H", ":").replace("M", ":")}
+            </p>
+            <p className="video_view">👁️ {kFormatter(props.view)} </p>
+          </div>
         </div>
       </div>
 
       {showHide ? (
         <>
-          <div className="tran"></div>
-          <div className="cap">
-            <p className="cap-head">
+          <div className="caption_card">
+            <p className="caption_heading">
               In this video
               <img
                 className="arrow"
@@ -37,7 +42,7 @@ const DisplaySearchResult = (props) => {
               />
             </p>
 
-            <div className="cap-data">
+            <div className="caption_data">
               {props.caps.length !== 0 ? (
                 <>
                   {props.caps.map((d, ind) => {

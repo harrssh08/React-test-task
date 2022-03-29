@@ -2,10 +2,20 @@
   display: flex;
   justify-content: center;
   border: 5px solid #ffffff;
+  height: 400px;
+  width: 800px;
+  backface-visibility: hidden;
 }
 
 .cross {
   position: absolute;
   margin-left: 100%;
   margin-top: -3%;
+}
+
+@media only screen and (max-width: 600px) {
+  .video {
+    height: 100%;
+    width: 100%;
+  }
 }

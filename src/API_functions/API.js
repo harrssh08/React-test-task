@@ -1,9 +1,9 @@
 import axios from "axios";
-import { BASE_URL } from "./API_data";
+import { BASE_URL, requestOptions } from "./config";
 
-import requestOptions from "../components/Info/requestOptions";
-const API_KEY = "AIzaSyBHP5FZDmvx8YtQGSVtZx0ChphxgkdZoWA";
+const API_KEY = process.env.API_KEY;
 
+//this api is for fetching top 5 videos using playlist id
 const Playlist_API = async (playlist_id) => {
   const Videos_data = await axios.get(
     `${BASE_URL}playlistItems?playlistId=${playlist_id}&key=${API_KEY}&part=snippet&maxResults=5`,
@@ -12,6 +12,7 @@ const Playlist_API = async (playlist_id) => {
   return Videos_data;
 };
 
+//this api is for fetching videos details using video id
 const Videos_API = async (videoID) => {
   const Videos_data = await axios.get(
     `${BASE_URL}videos?&part=snippet%2CcontentDetails%2Cstatistics&id=${videoID}&key=${API_KEY}`,
@@ -25,6 +26,7 @@ const Videos_API = async (videoID) => {
   return arr;
 };
 
+//this api is for fetching playlist id using channel name
 const Channel_API1 = async (channelID) => {
   const channel_API1 = await axios.get(
     `${BASE_URL}channels?part=contentDetails&forUsername=${channelID}&key=${API_KEY}`,
@@ -33,6 +35,7 @@ const Channel_API1 = async (channelID) => {
   return channel_API1;
 };
 
+//this api is for fetching playlist id using channel id
 const Channel_API2 = async (channelID) => {
   const channel_API2 = await axios.get(
     `${BASE_URL}channels?id=${channelID}&part=contentDetails&key=${API_KEY}`,

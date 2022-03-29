@@ -1,4 +1,4 @@
-.box {
+.result_box {
   display: flex;
   margin-left: 16%;
   margin-top: 1%;
@@ -6,13 +6,14 @@
   margin-right: 15%;
 }
 
-.thumb {
+.thumbnail {
   width: 15%;
 }
 
-.desc {
+.description {
   margin-left: 10px;
   margin-top: 7px;
+  width: 100%;
 }
 
 .heading {
@@ -24,7 +25,7 @@
   font-size: 17px;
 }
 
-.channel {
+.channel_name {
   font-family: "Nunito Sans", sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -32,26 +33,22 @@
   color: #4b5869;
 }
 
-#s_v {
+.video_view {
   font-family: "Nunito Sans", sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 10px;
-  float: right;
-  margin-top: -6px;
-  margin-left: 800px;
+  margin-right: 15px;
 }
 
-#s_d {
+.video_duration {
   font-family: "Nunito Sans", sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 10px;
-  float: left;
-  margin-top: -6px;
 }
 
-.cap {
+.caption_card {
   margin-left: 16%;
 
   background: #fff1f3;
@@ -61,7 +58,7 @@
   overflow-x: scroll;
 }
 
-.cap-head {
+.caption_heading {
   font-family: "Nunito Sans", sans-serif;
   font-style: normal;
   font-weight: 800;
@@ -80,7 +77,7 @@
   border-radius: 10px;
 }
 
-.cap-data {
+.caption_data {
   display: flex;
   margin-top: 2%;
   margin-left: 1%;
@@ -89,7 +86,7 @@
 .arrow {
   margin-left: 900px;
 }
-
+/* 
 .tran {
   width: 0;
   height: 0;
@@ -99,4 +96,19 @@
   margin-left: 48%;
   margin-top: 10px;
   margin-bottom: 0px;
+} */
+
+.time-view-container {
+  justify-content: space-between;
+  display: flex;
+}
+
+@media only screen and (max-width: 600px) {
+  .result_box {
+    display: flex;
+    flex-direction: column;
+  }
+  .thumbnail {
+    width: 100%;
+  }
 }

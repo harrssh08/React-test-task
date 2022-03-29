@@ -1,11 +1,12 @@
 .card_main {
-  width: 16%;
-  margin: 2%;
+  width: 250px;
+  margin: 20px;
+  position: relative;
   box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%);
-  float: left;
+  /* float: left; */
 }
 
-#s_channel {
+#channel_title {
   font-family: "Nunito Sans", sans-serif;
   font-style: normal;
   font-weight: normal;
@@ -14,22 +15,18 @@
   margin-bottom: 1%;
 }
 
-#s_view {
+#video_view {
   font-family: "Nunito Sans", sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 10px;
-  float: right;
-  padding: 1% 3% 1% 3%;
 }
 
-#s_duration {
+#video_duration {
   font-family: "Nunito Sans", sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 10px;
-  float: left;
-  padding: 1% 3% 1% 3%;
 }
 
 #heading {
@@ -38,15 +35,15 @@
   margin-bottom: 1%;
 }
 
-.ddd {
-  display: flex 1;
-  margin-top: 3%;
-}
-
-.remove {
+.remove1 {
   position: absolute;
-  margin-top: -15px;
-  margin-left: 220px;
+  right: -10px;
+  top: 0px;
+}
+.remove2 {
+  position: absolute;
+  top: -17px;
+  right: -14px;
 }
 
 .caption-card {
@@ -63,7 +60,7 @@
   font-size: 14px;
 }
 
-.cap-start {
+.caption-start {
   color: #cf203f;
   font-size: 16px;
 }
@@ -90,6 +87,19 @@
 }
 
 .fix-line {
-  margin-right: -60px;
-  min-width: 340%;
+  margin-right: -240%;
+}
+
+.view_dur {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 10px;
+  margin-left: 7px;
+}
+
+@media only screen and (max-width: 600px) {
+  .card_main {
+    margin-left: 65px;
+    margin-top: 50px;
+  }
 }

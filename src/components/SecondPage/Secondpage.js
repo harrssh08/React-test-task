@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Logo from "../Logo/Logo";
 import Header from "../Header/Header";
 import SearchBox from "../Input_box/SearchBox";
@@ -34,7 +34,7 @@ const Secondpage = (props) => {
     }
   };
   return (
-    <>
+    <div>
       <Logo />
       <Header page="2" />
       <SearchBox setInp={setInp} inp={inp} Search={Search} />
@@ -62,7 +62,7 @@ const Secondpage = (props) => {
           <p>No Result match!</p>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

@@ -1,6 +1,20 @@
 import Selectbar from "../Select/Selectbar";
+import AddIcon from "@mui/icons-material/Add";
 
 const Input = (props) => {
+  const clickEvent = () => {
+    if (props.inp !== "") {
+      if (props.option === "1") {
+        props.getdata(props.inp);
+      } else {
+        props.getvideosdata(props.inp);
+        return;
+      }
+    } else {
+      alert("Please enter url");
+      return;
+    }
+  };
   return (
     <>
       <div className="inputs">
@@ -16,40 +30,16 @@ const Input = (props) => {
             }}
             onKeyDown={(e) => {
               if (e.key === "Enter") {
-                if (props.inp !== "") {
-                  if (props.option === "1") {
-                    props.getdata(props.inp);
-                  } else {
-                    props.getvideosdata(props.inp);
-                    return;
-                  }
-                } else {
-                  alert("Please enter url");
-                  return;
-                }
+                clickEvent();
               }
             }}
             value={props.inp}
           />
-          <span id="bt">
-            <img
-              src="images/add.svg"
-              alt="add"
-              onClick={() => {
-                if (props.inp !== "") {
-                  if (props.option === "1") {
-                    props.getdata(props.inp);
-                  } else {
-                    props.getvideosdata(props.inp);
-                    return;
-                  }
-                } else {
-                  alert("Please enter url");
-                  return;
-                }
-              }}
-            />
-          </span>
+          <div id="button-add" onClick={clickEvent}>
+            <div className="icon-add">
+              <AddIcon fontSize="large" />
+            </div>
+          </div>
         </div>
       </div>
     </>

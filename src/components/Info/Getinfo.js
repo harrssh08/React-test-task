@@ -3,7 +3,7 @@ import Display from "../Display/Display";
 import Input from "../Input_box/Input";
 import getYoutubeId from "npm-get-youtube-id";
 import DisplayChannel from "../Display/DisplayChannel";
-import GetChannelID from "../../API_functions/Getchannelid";
+import { GetChannelID, videos_limit } from "../../API_functions/config";
 import {
   Playlist_API,
   Channel_API2,
@@ -11,16 +11,21 @@ import {
   Channel_API1,
 } from "../../API_functions/API";
 import Secondpage from "../SecondPage/Secondpage";
+import "./Getinfo.css";
 
 const Getinfo = () => {
   const [data, setData] = useState([]);
   const [inp, setInp] = useState("");
   const [selectedOption, setSelectedOption] = useState("0");
   const [videosData, setVideosData] = useState(null);
-  const [page, setPage] = useState("1");
+  const [page, setPage] = useState("first");
   const getValue = (e) => {
     setSelectedOption(e.target.value);
   };
+
+  useEffect(() => {
+    setPage("first");
+  }, [data]);
 
   const delData = (id) => {
     if (selectedOption === "1") {
@@ -44,7 +49,7 @@ const Getinfo = () => {
 
       const response = await Videos_API(ytid);
 
-      if (data.length > 9) {
+      if (data.length > videos_limit - 1) {
         alert("Only 10 Videos you can add in demo version");
       } else {
         setData([...data, response]);
@@ -96,17 +101,17 @@ const Getinfo = () => {
       />
 
       {/* Disply data*/}
-      <div style={{ display: "grid" }}>
-        {selectedOption === "1" ? (
-          <div style={{ display: "-ms-flexbox" }}>
-            <Display data={data} delData={delData} />
-          </div>
-        ) : (
-          <div style={{ display: "-ms-flexbox" }}>
-            <DisplayChannel data={videosData} delData={delData} />
-          </div>
-        )}
-      </div>
+      {/* <div style={{ display: "grid" }}> */}
+      {selectedOption === "1" ? (
+        <div className="cards-container">
+          <Display data={data} delData={delData} />
+        </div>
+      ) : (
+        <div className="cards-container">
+          <DisplayChannel data={videosData} delData={delData} />
+        </div>
+      )}
+      {/* </div> */}
       {/* Button */}
       <div>
         <div className="container text-center my-5">
@@ -115,7 +120,7 @@ const Getinfo = () => {
             style={{ backgroundColor: "#34c36d", color: "white" }}
             onClick={() => {
               if (data.length !== 0) {
-                setPage("2");
+                setPage("second");
               } else {
                 alert("Please add Video First");
               }
@@ -125,7 +130,7 @@ const Getinfo = () => {
           </button>
         </div>
 
-        {page === "2" ? (
+        {page === "second" ? (
           <>
             <Secondpage data={data} />
           </>
