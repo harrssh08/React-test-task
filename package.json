@@ -10,8 +10,6 @@
   
   "dependencies": {
   
-    
-  "@drorgl/youtube-captions-scraper": "^1.0.3",
   
     
   "@emotion/react": "^11.8.2",
@@ -52,11 +50,7 @@
     
   "get-youtube-id": "^1.0.1",
   
-    
-  "he": "^1.2.0",
   
-    
-  "lodash": "^4.17.21",
   
     
   "npm-get-youtube-id": "^1.0.10",
@@ -75,10 +69,7 @@
   
     
   "react-scripts": "5.0.0",
-  
     
-  "react-scroll": "^1.8.6",
-  
     
   "reactjs-popup": "^2.0.5",
   
